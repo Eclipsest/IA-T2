@@ -53,6 +53,20 @@ body {
   background-color: #cfd0f5;
 }
 
+.menu-responsable {
+  border-top: none;
+  padding-top: 0;
+}
+
+.menu-responsable a {
+  background-color: #dff5ea;
+  color: #17794f;
+}
+
+.menu-responsable a:hover {
+  background-color: #bfe9d4;
+}
+
 /* ---------- Pantallas (solo se ve la que está seleccionada) ---------- */
 .contenedor {
   max-width: 440px;
@@ -72,6 +86,10 @@ body {
 /* Si todavía no se ha hecho clic en nada, se muestra el estado vacío */
 .contenedor:not(:has(:target)) #vacio {
   display: block;
+}
+
+.contenedor:has(#decisiones:target) {
+  max-width: 900px;
 }
 
 .nota {
@@ -286,6 +304,90 @@ td {
 
 th {
   background-color: #e6e6fa;
+}
+
+/* ---------- Uso responsable ---------- */
+.etiqueta {
+  margin: 0;
+  font-size: 13px;
+  color: #555;
+}
+
+.divulgacion {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #555;
+}
+
+.oculto {
+  background-color: #fde2e2;
+  color: #8a1c1c;
+  padding: 0 4px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.oculto-caja {
+  background-color: #3b2bb5;
+}
+
+.oculto-caja .oculto {
+  background-color: #fde2e2;
+}
+
+.comparacion {
+  display: flex;
+  gap: 10px;
+}
+
+.tarjeta {
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.tarjeta h3 {
+  margin: 0 0 6px 0;
+  font-size: 15px;
+  color: #2b2a6f;
+}
+
+.tarjeta p {
+  margin: 0 0 8px 0;
+}
+
+.resultado-ok {
+  margin: 0;
+  padding: 10px 14px;
+  background-color: #dff5ea;
+  color: #17794f;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* La pantalla de decisiones necesita más ancho por la tabla */
+#decisiones {
+  width: 100%;
+}
+
+.decisiones {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.decisiones h2 {
+  margin-top: 0;
+  color: #2b2a6f;
+}
+
+.tabla-scroll {
+  overflow-x: auto;
 }
 
 /* ---------- Pantallas pequeñas ---------- */

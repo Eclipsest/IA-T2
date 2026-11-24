@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maqueta - Asistente del gimnasio Pulso</title>
+  <title>Maqueta + uso responsable - Asistente del gimnasio Pulso</title>
   <link rel="stylesheet" href="./estilos.css">
 </head>
 <body>
 
   <header class="encabezado">
     <h1>Asistente del gimnasio Pulso</h1>
-    <p>Maqueta navegable · Sesión 4 · Taller de experiencia de usuario</p>
+    <p>Maqueta navegable · Sesión 5 · IA responsable desde el inicio</p>
   </header>
 
   <!-- Menú para moverse entre los estados (usa enlaces a los id de cada pantalla) -->
@@ -20,6 +20,12 @@
     <a href="#respuesta">3. Respuesta</a>
     <a href="#error">4. Error</a>
     <a href="#persona">5. Hablar con una persona</a>
+  </nav>
+  <nav class="menu menu-responsable">
+    <a href="#privado">6. Dato privado</a>
+    <a href="#sesgo">7. Respuesta sesgada</a>
+    <a href="#impacto">8. Alto impacto</a>
+    <a href="#decisiones">9. Mis decisiones</a>
   </nav>
 
   <main class="contenedor">
@@ -80,6 +86,8 @@
             <p>Puedes congelarla hasta 30 días por año, avisando con 3 días de anticipación.</p>
             <!-- Fuente debajo de la respuesta para que la persona pueda comprobarla -->
             <a class="fuente" href="#respuesta">🔗 Fuente: Reglamento de membresías, artículo 6</a>
+            <!-- Divulgación: siempre se dice que respondió una IA -->
+            <small class="divulgacion">🤖 Respondió una IA, no una persona.</small>
           </div>
 
           <p class="tema-delicado">Si tu pregunta es sobre una lesión o tu salud, te pasamos con un entrenador.</p>
@@ -132,6 +140,129 @@
         </div>
       </div>
       <p class="nota">Salida a una persona: el asistente no decide temas delicados.</p>
+    </section>
+
+
+    <!-- SITUACIÓN 1: DATO PRIVADO -->
+    <section class="pantalla" id="privado">
+      <div class="chat">
+        <div class="chat-titulo">🔒 Situación 1: un dato privado</div>
+        <p class="aviso">⚠️ Respuestas generadas con IA: pueden contener errores.</p>
+
+        <div class="chat-cuerpo">
+          <p class="etiqueta">Lo que escribe la persona:</p>
+          <p class="mensaje-usuario">Hola, mi cédula es 1.037.456.789 y mi correo es ana@correo.com. ¿Hasta cuándo puedo congelar mi membresía?</p>
+
+          <p class="etiqueta">Lo que recibe el asistente (datos ocultos antes de enviar):</p>
+          <p class="mensaje-usuario oculto-caja">Hola, mi cédula es <span class="oculto">•••••••••••</span> y mi correo es <span class="oculto">•••••••••••</span>. ¿Hasta cuándo puedo congelar mi membresía?</p>
+
+          <div class="mensaje-bot">
+            <p>Para responder esto no hace falta ningún dato personal, así que lo oculté antes de enviarlo.</p>
+            <small class="divulgacion">🔐 No guardamos tu cédula ni tu correo. Solo se guarda la pregunta para mejorar el servicio.</small>
+          </div>
+        </div>
+
+        <div class="chat-entrada">
+          <input type="text" placeholder="Escribe otra pregunta…">
+          <a class="boton" href="#cargando">Enviar</a>
+        </div>
+      </div>
+      <p class="nota">Ley 1581 de 2012: protección de datos personales en Colombia.</p>
+    </section>
+
+    <!-- SITUACIÓN 2: RESPUESTA SESGADA (prueba en pareja) -->
+    <section class="pantalla" id="sesgo">
+      <div class="chat">
+        <div class="chat-titulo">⚖️ Situación 2: una respuesta sesgada</div>
+        <p class="aviso">⚠️ Respuestas generadas con IA: pueden contener errores.</p>
+
+        <div class="chat-cuerpo">
+          <p class="etiqueta">Prueba en pareja: dos casos idénticos, solo cambia el nombre y el género.</p>
+
+          <div class="comparacion">
+            <div class="tarjeta">
+              <h3>Persona A</h3>
+              <p>Carlos, 30 años, quiere ir 3 veces por semana.</p>
+              <p class="mensaje-bot">Te sugiero el Plan Estándar.</p>
+            </div>
+            <div class="tarjeta">
+              <h3>Persona B</h3>
+              <p>Carolina, 30 años, quiere ir 3 veces por semana.</p>
+              <p class="mensaje-bot">Te sugiero el Plan Estándar.</p>
+            </div>
+          </div>
+
+          <p class="resultado-ok">✅ Misma situación, misma respuesta. La prueba pasa.</p>
+          <p class="tema-delicado">Si las respuestas fueran distintas, es un sesgo: se corrige antes de publicar.</p>
+        </div>
+      </div>
+      <p class="nota">El asistente recomienda por lo que la persona necesita (días y horario), no por su nombre, edad o género.</p>
+    </section>
+
+    <!-- SITUACIÓN 3: RECOMENDACIÓN DE ALTO IMPACTO -->
+    <section class="pantalla" id="impacto">
+      <div class="chat">
+        <div class="chat-titulo">🩺 Situación 3: alto impacto (salud)</div>
+        <p class="aviso">⚠️ Respuestas generadas con IA: pueden contener errores.</p>
+
+        <div class="chat-cuerpo">
+          <p class="mensaje-usuario">Me duele la rodilla cuando hago sentadillas, ¿puedo seguir entrenando igual?</p>
+
+          <div class="mensaje-bot">
+            <p>Esto es un tema de salud y yo no puedo recomendarte qué hacer. Lo mejor es que lo revise una persona.</p>
+            <small class="divulgacion">🤖 Respondió una IA, no una persona.</small>
+          </div>
+
+          <a class="boton boton-persona" href="#persona">🙋 Hablar con un entrenador</a>
+          <p class="tema-delicado">Temas que siempre se derivan a una persona: salud, lesiones, medicamentos, pagos y decisiones sobre una cuenta.</p>
+        </div>
+      </div>
+      <p class="nota">La IA informa, una persona decide.</p>
+    </section>
+
+    <!-- LISTA DE DECISIONES DE USO RESPONSABLE (evidencia) -->
+    <section class="pantalla" id="decisiones">
+      <div class="decisiones">
+        <h2>Decisiones de uso responsable de mi asistente</h2>
+        <p>Cada principio se vuelve una regla que se puede comprobar.</p>
+
+        <div class="tabla-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Situación</th>
+                <th>Cómo actúa el asistente</th>
+                <th>Regla que se comprueba</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>🔒 Un dato privado</td>
+                <td>No pide datos que no necesita. Si la persona escribe cédula, correo o celular, los oculta antes de enviar y avisa qué se guarda.</td>
+                <td>Si escribo una cédula de prueba, en lo que recibe el asistente aparece oculta (•••).</td>
+              </tr>
+              <tr>
+                <td>⚖️ Una respuesta sesgada</td>
+                <td>Recomienda según lo que la persona necesita, no según su nombre, edad o género.</td>
+                <td>Dos casos idénticos que solo cambian el nombre o el género reciben la misma recomendación.</td>
+              </tr>
+              <tr>
+                <td>🩺 Una recomendación de alto impacto</td>
+                <td>No recomienda en temas de salud. Informa, deriva a una persona y avisa que responde una IA.</td>
+                <td>Si el mensaje habla de dolor, lesión o medicamento, siempre aparece el botón «Hablar con un entrenador».</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Reglas que valen para todas las respuestas</h3>
+        <ul>
+          <li><strong>Explicar:</strong> cada respuesta muestra su fuente (reglamento, artículo).</li>
+          <li><strong>Pedir permiso:</strong> no se guardan conversaciones ni grabaciones sin permiso.</li>
+          <li><strong>Avisar:</strong> debajo de cada respuesta dice «Respondió una IA, no una persona».</li>
+        </ul>
+      </div>
+      <p class="nota">Esta es la evidencia de la sesión: la lista de decisiones aplicada a mi asistente.</p>
     </section>
 
   </main>
