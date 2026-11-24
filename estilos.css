@@ -1,0 +1,296 @@
+/* ---------- Estilos generales ---------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f1f3f8;
+  color: #222;
+  line-height: 1.5;
+}
+
+/* ---------- Encabezado y menú ---------- */
+.encabezado {
+  background-color: #2b2a6f;
+  color: white;
+  text-align: center;
+  padding: 24px 16px;
+}
+
+.encabezado h1 {
+  margin: 0 0 4px 0;
+  font-size: 26px;
+}
+
+.encabezado p {
+  margin: 0;
+  font-size: 14px;
+  color: #cfd0f5;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #2b2a6f;
+  background-color: #e6e6fa;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.menu a:hover {
+  background-color: #cfd0f5;
+}
+
+/* ---------- Pantallas (solo se ve la que está seleccionada) ---------- */
+.contenedor {
+  max-width: 440px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+.pantalla {
+  display: none;
+}
+
+/* :target = la pantalla a la que apuntó el enlace */
+.pantalla:target {
+  display: block;
+}
+
+/* Si todavía no se ha hecho clic en nada, se muestra el estado vacío */
+.contenedor:not(:has(:target)) #vacio {
+  display: block;
+}
+
+.nota {
+  font-size: 13px;
+  color: #555;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.nota a {
+  color: #2b2a6f;
+}
+
+/* ---------- Caja del chat ---------- */
+.chat {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.chat-titulo {
+  background-color: #5a3df0;
+  color: white;
+  font-weight: bold;
+  padding: 14px 16px;
+}
+
+/* Aviso de límites: bien visible, con color de advertencia */
+.aviso {
+  margin: 0;
+  padding: 8px 16px;
+  background-color: #fff3c4;
+  color: #5c4500;
+  font-size: 14px;
+  border-bottom: 1px solid #f0dc8a;
+}
+
+.chat-cuerpo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  min-height: 300px;
+}
+
+/* ---------- Mensajes ---------- */
+.mensaje-bot,
+.mensaje-usuario,
+.mensaje-error {
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  max-width: 85%;
+  font-size: 15px;
+}
+
+.mensaje-bot {
+  background-color: #eeeafd;
+  align-self: flex-start;
+}
+
+.mensaje-bot p {
+  margin: 0 0 6px 0;
+}
+
+.mensaje-usuario {
+  background-color: #5a3df0;
+  color: white;
+  align-self: flex-end;
+}
+
+.mensaje-error {
+  background-color: #fde2e2;
+  color: #8a1c1c;
+  align-self: flex-start;
+}
+
+.mensaje-error p {
+  margin: 0;
+}
+
+.espera {
+  font-style: italic;
+  color: #555;
+}
+
+.fuente {
+  display: inline-block;
+  font-size: 13px;
+  color: #3a2bb5;
+  font-weight: bold;
+}
+
+.tema-delicado {
+  margin: 8px 0 0 0;
+  font-size: 13px;
+  color: #555;
+}
+
+/* ---------- Sugerencias del estado vacío ---------- */
+.sugerencia {
+  display: block;
+  padding: 10px 14px;
+  border: 1px solid #5a3df0;
+  border-radius: 20px;
+  color: #5a3df0;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.sugerencia:hover {
+  background-color: #eeeafd;
+}
+
+/* ---------- Barra de carga con animación ---------- */
+.barra {
+  width: 85%;
+  height: 8px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.barra-avance {
+  width: 40%;
+  height: 100%;
+  background-color: #5a3df0;
+  animation: moverBarra 1.2s infinite ease-in-out;
+}
+
+@keyframes moverBarra {
+  0%   { margin-left: -40%; }
+  100% { margin-left: 100%; }
+}
+
+/* ---------- Botones ---------- */
+.boton {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  background-color: #5a3df0;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.boton:hover {
+  background-color: #4529d6;
+}
+
+.boton-persona {
+  background-color: #1f9d6b;
+}
+
+.boton-persona:hover {
+  background-color: #17794f;
+}
+
+.boton-secundario {
+  background-color: white;
+  color: #5a3df0;
+  border: 2px solid #5a3df0;
+}
+
+.boton-secundario:hover {
+  background-color: #eeeafd;
+}
+
+/* ---------- Caja para escribir ---------- */
+.chat-entrada {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+  border-top: 1px solid #ddd;
+}
+
+.chat-entrada input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* ---------- Hallazgos de la prueba ---------- */
+.hallazgos {
+  max-width: 720px;
+  margin: 32px auto;
+  padding: 0 16px 40px 16px;
+}
+
+.hallazgos h2 {
+  color: #2b2a6f;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+  font-size: 14px;
+}
+
+th {
+  background-color: #e6e6fa;
+}
+
+/* ---------- Pantallas pequeñas ---------- */
+@media (max-width: 480px) {
+  .encabezado h1 {
+    font-size: 20px;
+  }
+}

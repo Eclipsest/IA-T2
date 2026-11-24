@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maqueta - Asistente del gimnasio Pulso</title>
+  <link rel="stylesheet" href="./estilos.css">
+</head>
+<body>
+
+  <header class="encabezado">
+    <h1>Asistente del gimnasio Pulso</h1>
+    <p>Maqueta navegable · Sesión 4 · Taller de experiencia de usuario</p>
+  </header>
+
+  <!-- Menú para moverse entre los estados (usa enlaces a los id de cada pantalla) -->
+  <nav class="menu">
+    <a href="#vacio">1. Vacío</a>
+    <a href="#cargando">2. Cargando</a>
+    <a href="#respuesta">3. Respuesta</a>
+    <a href="#error">4. Error</a>
+    <a href="#persona">5. Hablar con una persona</a>
+  </nav>
+
+  <main class="contenedor">
+
+    <!-- ESTADO 1: VACÍO -->
+    <section class="pantalla" id="vacio">
+      <div class="chat">
+        <div class="chat-titulo">🏋️ Asistente del gimnasio</div>
+
+        <!-- Aviso de límites: a la vista, no en letra pequeña -->
+        <p class="aviso">⚠️ Respuestas generadas con IA: pueden contener errores.</p>
+
+        <div class="chat-cuerpo">
+          <p class="mensaje-bot">¡Hola! Te ayudo con horarios, membresías y reglas del gimnasio. Prueba con una de estas preguntas:</p>
+          <a class="sugerencia" href="#cargando">¿Hasta cuándo puedo congelar mi membresía?</a>
+          <a class="sugerencia" href="#cargando">¿A qué hora cierran los domingos?</a>
+          <a class="sugerencia" href="#cargando">¿Puedo traer un invitado?</a>
+        </div>
+
+        <div class="chat-entrada">
+          <input type="text" placeholder="Ej.: ¿Hasta qué hora abren el sábado?">
+          <a class="boton" href="#cargando">Enviar</a>
+        </div>
+      </div>
+      <p class="nota">Estado vacío: muestra sugerencias para empezar.</p>
+    </section>
+
+    <!-- ESTADO 2: CARGANDO -->
+    <section class="pantalla" id="cargando">
+      <div class="chat">
+        <div class="chat-titulo">🏋️ Asistente del gimnasio</div>
+        <p class="aviso">⚠️ Respuestas generadas con IA: pueden contener errores.</p>
+
+        <div class="chat-cuerpo">
+          <p class="mensaje-usuario">¿Hasta cuándo puedo congelar mi membresía?</p>
+          <p class="mensaje-bot espera">⏳ Pensando…</p>
+          <!-- Esta barra se mueve con una animación sencilla de CSS -->
+          <div class="barra"><div class="barra-avance"></div></div>
+        </div>
+
+        <div class="chat-entrada">
+          <input type="text" placeholder="Espera un momento…" disabled>
+          <a class="boton" href="#respuesta">Ver respuesta</a>
+        </div>
+      </div>
+      <p class="nota">Estado cargando: la persona sabe que el asistente está trabajando.</p>
+    </section>
+
+    <!-- ESTADO 3: RESPUESTA (con su fuente) -->
+    <section class="pantalla" id="respuesta">
+      <div class="chat">
+        <div class="chat-titulo">🏋️ Asistente del gimnasio</div>
+        <p class="aviso">⚠️ Respuestas generadas con IA: pueden contener errores.</p>
+
+        <div class="chat-cuerpo">
+          <p class="mensaje-usuario">¿Hasta cuándo puedo congelar mi membresía?</p>
+          <div class="mensaje-bot">
+            <p>Puedes congelarla hasta 30 días por año, avisando con 3 días de anticipación.</p>
+            <!-- Fuente debajo de la respuesta para que la persona pueda comprobarla -->
+            <a class="fuente" href="#respuesta">🔗 Fuente: Reglamento de membresías, artículo 6</a>
+          </div>
+
+          <p class="tema-delicado">Si tu pregunta es sobre una lesión o tu salud, te pasamos con un entrenador.</p>
+          <a class="boton boton-persona" href="#persona">🙋 Hablar con una persona</a>
+        </div>
+
+        <div class="chat-entrada">
+          <input type="text" placeholder="Escribe otra pregunta…">
+          <a class="boton" href="#cargando">Enviar</a>
+        </div>
+      </div>
+      <p class="nota">Estado respuesta: corta, con su fuente debajo y una salida a una persona.
+        <a href="#error">Ver qué pasa si falla →</a></p>
+    </section>
+
+    <!-- ESTADO 4: ERROR -->
+    <section class="pantalla" id="error">
+      <div class="chat">
+        <div class="chat-titulo">🏋️ Asistente del gimnasio</div>
+        <p class="aviso">⚠️ Respuestas generadas con IA: pueden contener errores.</p>
+
+        <div class="chat-cuerpo">
+          <p class="mensaje-usuario">¿Cuánto cuesta el plan para estudiantes?</p>
+          <div class="mensaje-error">
+            <p>No encontré esa información en los documentos del gimnasio, así que prefiero no inventarla.</p>
+          </div>
+          <!-- Error honesto + una salida: reintentar o hablar con una persona -->
+          <a class="boton boton-secundario" href="#cargando">🔄 Intentar de nuevo</a>
+          <a class="boton boton-persona" href="#persona">🙋 Hablar con una persona</a>
+        </div>
+
+        <div class="chat-entrada">
+          <input type="text" placeholder="Escribe otra pregunta…">
+          <a class="boton" href="#cargando">Enviar</a>
+        </div>
+      </div>
+      <p class="nota">Estado error: mensaje claro y siempre una salida.</p>
+    </section>
+
+    <!-- SALIDA A UNA PERSONA -->
+    <section class="pantalla" id="persona">
+      <div class="chat">
+        <div class="chat-titulo">🙋 Atención con una persona</div>
+        <p class="aviso">⚠️ Respuestas generadas con IA: pueden contener errores.</p>
+
+        <div class="chat-cuerpo">
+          <p class="mensaje-bot">Listo, te conectamos con alguien del equipo. Te responderán en horario de atención: lunes a sábado, 6:00 a. m. a 8:00 p. m.</p>
+          <p class="mensaje-bot">Para salud, pagos o decisiones sobre una cuenta, siempre te atiende una persona.</p>
+          <a class="boton boton-secundario" href="#vacio">← Volver al asistente</a>
+        </div>
+      </div>
+      <p class="nota">Salida a una persona: el asistente no decide temas delicados.</p>
+    </section>
+
+  </main>
+
+  <!-- HALLAZGOS DE LA PRUEBA CON OTRO EQUIPO -->
+  <section class="hallazgos">
+    <h2>Hallazgos de la prueba con otro equipo</h2>
+    <p>Tarea: «averigua hasta cuándo puedes congelar tu membresía». Yo observo sin explicar ni ayudar.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Dónde dudó</th>
+          <th>Qué no encontró</th>
+          <th>Qué corregimos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Completa estas filas después de hacer la prueba -->
+        <tr>
+          <td>(escribe aquí lo que observaste)</td>
+          <td>(escribe aquí)</td>
+          <td>(escribe aquí)</td>
+        </tr>
+        <tr>
+          <td>(escribe aquí)</td>
+          <td>(escribe aquí)</td>
+          <td>(escribe aquí)</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</body>
+</html>
